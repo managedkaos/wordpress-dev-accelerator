@@ -3,10 +3,10 @@ COMPOSE_PROJECT_NAME=$(shell basename $(PWD) | tr '[:upper:]' '[:lower:]')
 up:
 	docker-compose up -d
 
-dbcheck:
+dbcheck: up
 	docker-compose exec db /usr/local/bin/dbcheck.sh
 
-install: up dbcheck
+install: dbcheck
 	docker-compose exec wordpress /usr/local/bin/install-cli.sh
 	docker-compose exec --user www-data wordpress /usr/local/bin/install-wp.sh
 

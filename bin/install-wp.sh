@@ -1,6 +1,4 @@
 #!/bin/bash -e
-echo "Waiting for services to start..."
-sleep 15
 echo "Installing Wordpress..."
 wp core install \
     --url=localhost:13000 \
