@@ -7,7 +7,8 @@ dbcheck:
 	docker-compose exec db /usr/local/bin/dbcheck.sh
 
 install: up dbcheck
-	docker-compose exec --user www-data wordpress /usr/local/bin/install.sh
+	docker-compose exec wordpress /usr/local/bin/install-cli.sh
+	docker-compose exec --user www-data wordpress /usr/local/bin/install-wp.sh
 
 exec:
 	docker-compose exec --user www-data wordpress bash

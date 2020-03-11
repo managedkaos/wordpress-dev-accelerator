@@ -8,7 +8,7 @@ services:
        - ./bin/dbcheck.sh:/usr/local/bin/dbcheck.sh
      restart: always
      environment:
-       MYSQL_ROOT_PASSWORD: wordpress
+       MYSQL_ROOT_PASSWORD: root
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
@@ -16,7 +16,8 @@ services:
    wordpress:
      image: wordpress:latest
      volumes:
-       - ./bin/install.sh:/usr/local/bin/install.sh
+       - ./bin/install-cli.sh:/usr/local/bin/install-cli.sh
+       - ./bin/install-wp.sh:/usr/local/bin/install-wp.sh
        - ./wp-content:/var/www/html/wp-content
        - ./plugin-project:/var/www/html/wp-content/plugins/plugin-project
        - ./theme-project:/var/www/html/wp-content/themes/theme-project
