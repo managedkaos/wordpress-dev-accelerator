@@ -11,3 +11,6 @@ wp core install \
 echo "Removing default plugins..."
 wp plugin delete hello
 wp plugin delete akismet
+
+echo "Updating default themes..."
+wp theme update --all
